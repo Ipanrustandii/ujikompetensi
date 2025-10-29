@@ -1,0 +1,175 @@
+/* Blue Theme CSS */
+/* Cool colors: Blues and teals */
+
+:root {
+  --primary-blue: #2E809C;
+  --light-bg: #EBF5FB;
+  --card-bg: #ffffff;
+  --text-dark: #2C3E50;
+  --text-light: #ECF0F1;
+}
+
+body {
+  background: linear-gradient(135deg, var(--light-bg) 0%, #ffeaa7 100%);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--text-dark);
+  min-height: 100vh;
+}
+
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--primary-blue);
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(46, 128, 156, 0.2);
+}
+
+.card-header, .card-body {
+  background: transparent;
+}
+
+.btn-primary {
+  background-color: var(--primary-blue);
+  border-color: var(--primary-blue);
+  border-radius: 25px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #1B4F72;
+  border-color: #1B4F72;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(46, 128, 156, 0.4);
+}
+
+.btn-success {
+  background-color: var(--primary-blue);
+  border-color: var(--primary-blue);
+  border-radius: 25px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.btn-success:hover {
+  background-color: #1B4F72;
+  border-color: #1B4F72;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(46, 128, 156, 0.4);
+}
+
+.btn-warning {
+  background-color: var(--primary-blue);
+  border-color: var(--primary-blue);
+  color: var(--text-light);
+  border-radius: 25px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.btn-warning:hover {
+  background-color: #1B4F72;
+  border-color: #1B4F72;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(46, 128, 156, 0.4);
+}
+
+.form-control {
+  border: 2px solid var(--primary-blue);
+  border-radius: 10px;
+  transition: border-color 0.3s ease;
+}
+
+.form-control:focus {
+  border-color: var(--primary-blue);
+  box-shadow: 0 0 0 0.2rem rgba(46, 128, 156, 0.25);
+}
+
+.table {
+  background: var(--card-bg);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.table thead th {
+  background-color: var(--primary-blue);
+  color: var(--text-light);
+  border: none;
+}
+
+.table tbody tr:hover {
+  background-color: rgba(46, 128, 156, 0.1);
+}
+
+.sidebar {
+  background: linear-gradient(180deg, #1B4F72 0%, var(--primary-blue) 100%);
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar a {
+  color: var(--text-light);
+  transition: all 0.3s ease;
+}
+
+.sidebar a:hover {
+  background-color: var(--primary-blue);
+  color: var(--text-dark);
+  transform: translateX(5px);
+}
+
+.alert-success {
+  background-color: rgba(46, 204, 113, 0.1);
+  border-color: #27ae60;
+  color: #27ae60;
+  border-radius: 10px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--primary-blue);
+  font-weight: bold;
+}
+
+.text-primary {
+  color: var(--primary-blue) !important;
+}
+
+.text-muted {
+  color: #7f8c8d !important;
+}
+
+/* Seblak logo/background */
+.seblak-bg {
+  background-image: url('image/seblak.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+/* Cool icons */
+.bi {
+  color: var(--primary-blue);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--light-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-blue);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #1B4F72;
+}
