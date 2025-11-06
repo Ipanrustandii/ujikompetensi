@@ -1,8 +1,0 @@
-- [x] Create admin report page (konten/Laporan/laporan.php) without session check
-- [x] Add date filter form
-- [x] Query total revenue for all transactions with optional date range
-- [x] Query all transactions joined with user table, with date filter, ordered by date desc
-- [x] Display total revenue and table of transactions including cashier name
-- [x] Add print styles to hide buttons and forms when printing
-- [x] Fix receipt link path
-- [ ] Test the report functionality

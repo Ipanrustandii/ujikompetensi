@@ -8,7 +8,7 @@ if (!isset($_GET['id'])) {
 $id_transaksi = (int)$_GET['id'];
 
 // Ambil data transaksi
-$sql_transaksi = "SELECT t.*, u.username FROM transaksi t LEFT JOIN user u ON t.id_user = u.id_user WHERE t.id_transaksi = ?";
+$sql_transaksi = "SELECT t.*, u.nama FROM transaksi t LEFT JOIN user u ON t.id_user = u.id_user WHERE t.id_transaksi = ?";
 $stmt = $conn->prepare($sql_transaksi);
 $stmt->bind_param("i", $id_transaksi);
 $stmt->execute();
@@ -150,7 +150,7 @@ $detail = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
     <div class="info">
         <div><strong>No. Transaksi:</strong> #<?= str_pad($transaksi['id_transaksi'], 6, '0', STR_PAD_LEFT) ?></div>
         <div><strong>Tanggal:</strong> <?= date('d/m/Y H:i', strtotime($transaksi['tanggal'])) ?></div>
-        <div><strong>Kasir:</strong> <?= htmlspecialchars($transaksi['username'] ?? 'kasir') ?></div>
+        <div><strong>Kasir:</strong> <?= htmlspecialchars($transaksi['nama'] ?? 'kasir') ?></div>
     </div>
 
     <div class="items">

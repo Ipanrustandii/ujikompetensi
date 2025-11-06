@@ -46,6 +46,66 @@ $res = $stmt->get_result();
     <title>Laporan Transaksi Admin</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
+        :root{
+            --primary: #2E809C;
+            --primary-dark: #266f86;
+            --bg: #f6fbfc;
+            --muted: #6c757d;
+        }
+
+        /* Base layout */
+        body.bg-light{
+            background-color: var(--bg) !important;
+            color: #123238;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+        }
+
+        h4 { color: var(--primary); }
+
+        /* Buttons */
+        .btn-primary{
+            background-color: var(--primary) !important;
+            border-color: var(--primary) !important;
+            color: #fff !important;
+        }
+        .btn-primary:hover, .btn-primary:focus{
+            background-color: var(--primary-dark) !important;
+            border-color: var(--primary-dark) !important;
+        }
+        .btn-success{
+            background-color: var(--primary) !important;
+            border-color: var(--primary) !important;
+            color: #fff !important;
+        }
+
+        /* Alerts */
+        .alert-success{
+            background-color: rgba(46,128,156,0.12);
+            border-color: rgba(46,128,156,0.18);
+            color: #0b3740;
+        }
+
+        /* Card and table */
+        .card{ border-radius:8px; }
+        .table thead{
+            background-color: rgba(46,128,156,0.08);
+        }
+        .table-striped > tbody > tr:nth-of-type(odd){
+            background-color: rgba(46,128,156,0.02);
+        }
+        .aksi .btn-warning{
+            background-color: #f6c84c; /* keep contrast for print/cetak nota */
+            border-color: #f6c84c;
+            color: #1b1b1b;
+        }
+
+        /* Responsive tweaks */
+        @media (max-width: 768px){
+            div[style*="margin-left:260px"]{ margin-left:0 !important; padding:12px !important; }
+            .table thead th{ font-size: 13px; }
+        }
+
+        /* Print-specific rules (kept) */
         @media print {
 
             button,
@@ -67,7 +127,7 @@ $res = $stmt->get_result();
 </head>
 
 <body class="bg-light">
-    <div style="margin-left:260px; padding:20px">
+    <div style="margin-left:30px; padding:20px">
         <h4 class="mb-3">📊 Laporan Transaksi Semua Kasir</h4>
 
         <!-- Filter tanggal -->

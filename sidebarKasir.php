@@ -64,10 +64,8 @@
 <body>
   <div class="sidebar">
     <h4 class="text-center text-white py-3">Kasir</h4>
-    <a href="kontenKasir/oh.php" target="kontenFrame">
-      <i class="bi bi-house"></i> Dashboard
-    </a>
-    <a href="kontenKasir/Menu/daftarMenu.php" target="kontenFrame">
+    
+    <a href="kontenKasir/produk.php" target="kontenFrame">
       <i class="bi bi-house"></i> Daftar Menu
     </a>
    
@@ -84,7 +82,7 @@
   </div>
 
   <div class="content">
-    <iframe src="KontenKasir/oh.php" name="kontenFrame"></iframe>
+    <iframe src="KontenKasir/produk.php" name="kontenFrame"></iframe>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>

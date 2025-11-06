@@ -58,7 +58,7 @@
         }
 
         .btn {
-            background: #2dce89;
+            background: #266f86;
             color: #fff;
             border: none;
             padding: 8px 18px;
@@ -69,7 +69,7 @@
         }
 
         .btn:hover {
-            background: #218c5b;
+            background: #2E809C;
         }
     </style>
 </head>

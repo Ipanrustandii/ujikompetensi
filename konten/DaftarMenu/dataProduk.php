@@ -10,10 +10,91 @@
     <link
         rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" />
-    <link rel="stylesheet" href="../../theme.css" />
-    <link rel="stylesheet" href="style-produk.css" />
-    <title>Daftar Menu</title>
     
+    <title>Daftar Menu</title>
+</head>
+
+    <style>
+        :root{
+            --primary: #2E809C;
+            --primary-dark: #266f86;
+            --muted: #6c757d;
+            --bg: #f6fbfc;
+        }
+
+        /* Page background & base text */
+        body{
+            background-color: var(--bg);
+            color: #123238;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+        }
+
+        /* Headings and icons using dominant color */
+        h2.text-primary, .text-primary{
+            color: var(--primary) !important;
+        }
+        .bi{ color: var(--primary); }
+
+        /* Buttons: prefer primary color instead of default bootstrap green */
+        .btn-success{
+            background-color: var(--primary) !important;
+            border-color: var(--primary) !important;
+            color: #fff !important;
+        }
+        .btn-success:hover, .btn-success:focus{
+            background-color: var(--primary-dark) !important;
+            border-color: var(--primary-dark) !important;
+            box-shadow: 0 0 0 .2rem rgba(46,128,156,0.15);
+        }
+
+        /* Outline primary buttons */
+        .btn-outline-primary{
+            color: var(--primary) !important;
+            border-color: var(--primary) !important;
+        }
+        .btn-outline-primary:hover{
+            background-color: var(--primary) !important;
+            color: #fff !important;
+        }
+
+        /* Table styling */
+        .table thead{
+            background-color: rgba(46,128,156,0.06);
+            border-bottom: 2px solid rgba(46,128,156,0.12);
+        }
+        .table-hover tbody tr:hover{
+            background-color: rgba(46,128,156,0.03);
+        }
+        .table td, .table th{
+            vertical-align: middle;
+        }
+
+        /* Image thumbnails in table */
+        .table img{
+            display: block;
+            max-width: 100px;
+            height: auto;
+            border-radius: 6px;
+            object-fit: cover;
+        }
+
+        /* Container card look */
+        .container.py-4{
+            padding-top: 1.5rem !important;
+            padding-bottom: 1.5rem !important;
+        }
+
+        /* Small utility tweaks */
+        .fw-semibold{ font-weight:600; }
+        .shadow-sm{ box-shadow: 0 1px 3px rgba(16,24,32,0.06) !important; }
+
+        /* Responsive tweaks */
+        @media (max-width: 576px){
+            .table img{ max-width: 72px; }
+            h2{ font-size: 1.125rem; }
+        }
+    </style>
+
 </head>
 
 <body>

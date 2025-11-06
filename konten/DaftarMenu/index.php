@@ -80,7 +80,7 @@
         
         /* Add Kembali button */
         .btn-kembali {
-            background-color: #ff0000;
+            
             color: white;
             border: none;
             padding: 8px 25px;
@@ -122,19 +122,35 @@
                                             type="text"
                                             class="form-control"
                                             id="namaProduk"
-                                            name="nama_produk" />
+                                            name="nama_produk"
+                                            required
+                                            placeholder="Masukkan nama produk" />
                                     </div>
                                 </div>
                                 <div class="mb-3 row align-items-center">
                                     <label for="harga" class="col-sm-3 col-form-label">Harga</label>
                                     <div class="col-sm-8">
-                                        <input type="text" class="form-control" id="harga" name="harga" />
+                                        <input 
+                                            type="number" 
+                                            class="form-control" 
+                                            id="harga" 
+                                            name="harga"
+                                            required
+                                            min="0"
+                                            placeholder="Masukkan harga" />
                                     </div>
                                 </div>
                                 <div class="mb-3 row align-items-center">
-                                    <label for="Text" class="col-sm-3 col-form-label">Stok</label>
+                                    <label for="stok" class="col-sm-3 col-form-label">Stok</label>
                                     <div class="col-sm-8">
-                                        <input type="Text" class="form-control" id="stok" name="stok" />
+                                        <input 
+                                            type="number" 
+                                            class="form-control" 
+                                            id="stok" 
+                                            name="stok"
+                                            required
+                                            min="0"
+                                            placeholder="Masukkan jumlah stok" />
                                     </div>
                                 </div>
                                 <div class="mb-3 row align-items-center">

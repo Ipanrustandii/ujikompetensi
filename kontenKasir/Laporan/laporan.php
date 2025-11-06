@@ -72,7 +72,7 @@ $res = $stmt->get_result();
 </head>
 
 <body class="bg-light">
-    <div style="margin-left:260px; padding:20px">
+    <div style="margin-left:20px; padding:20px">
         <h4 class="mb-3">📊 Laporan Transaksi Saya</h4>
 
         <!-- Filter tanggal -->

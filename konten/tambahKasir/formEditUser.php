@@ -40,7 +40,7 @@
         .input-icon {
             position: absolute;
             left: 12px;
-            top: 50%;
+            top: 70%;
             transform: translateY(-50%);
             color: var(--primary-blue);
             font-size: 1.05rem;
