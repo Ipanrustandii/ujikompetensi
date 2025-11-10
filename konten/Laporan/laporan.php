@@ -87,9 +87,13 @@ $res = $stmt->get_result();
             background-color: rgba(46,128,156,0.02);
         }
         .aksi .btn-warning{
-            background-color: #f6c84c; /* keep contrast for print/cetak nota */
-            border-color: #f6c84c;
-            color: #1b1b1b;
+            background-color: #2E809C; /* use primary color */
+            border-color: #2E809C;
+            color: #fff;
+        }
+        .aksi .btn-warning:hover{
+            background-color: #266f86;
+            border-color: #266f86;
         }
 
         /* Responsive tweaks */
@@ -150,7 +154,7 @@ $res = $stmt->get_result();
         <div class="card p-3 shadow-sm">
             <div class="table-responsive">
                 <table class="table table-bordered table-striped align-middle">
-                    <thead class="table-dark text-center">
+                    <thead class="text-center">
                         <tr>
                             <th>No</th>
                             <th>Kode Transaksi</th>

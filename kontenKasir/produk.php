@@ -29,6 +29,8 @@ function product_image_src($filename, $width = 180) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
     <style>
         :root {
+            --primary-color: #2E809C;
+            --primary-hover: #266f86;
             --grey-primary: #2c3338;
             --grey-secondary: #3f474e;
             --grey-light: #e9ecef;
@@ -37,6 +39,7 @@ function product_image_src($filename, $width = 180) {
 
         body {
             background-color: var(--grey-light);
+            color: #123238;
         }
 
         .card {
@@ -50,50 +53,51 @@ function product_image_src($filename, $width = 180) {
 
         /* Best Seller Card */
         .card-header.bg-warning {
-            background-color: var(--grey-secondary) !important;
+            background-color: var(--primary-color) !important;
             color: white !important;
         }
 
         .btn-warning {
-            background-color: var(--grey-primary);
-            border-color: var(--grey-primary);
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
             color: white;
         }
 
         .btn-warning:hover {
-            background-color: var(--grey-hover);
-            border-color: var(--grey-hover);
+            background-color: var(--primary-hover);
+            border-color: var(--primary-hover);
             color: white;
         }
 
         /* Product List Card */
         .card-header.bg-primary {
-            background-color: var(--grey-primary) !important;
+            background-color: var(--primary-color) !important;
         }
 
         .btn-success {
-            background-color: var(--grey-secondary);
-            border-color: var(--grey-secondary);
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            color: white;
         }
 
         .btn-success:hover {
-            background-color: var(--grey-hover);
-            border-color: var(--grey-hover);
+            background-color: var(--primary-hover);
+            border-color: var(--primary-hover);
         }
 
         /* Cart Card */
         .card-header.bg-success {
-            background-color: var(--grey-secondary) !important;
+            background-color: var(--primary-color) !important;
         }
 
         .btn-primary {
-            background-color: var(--grey-primary);
-            border-color: var(--grey-primary);
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
         }
 
         .btn-primary:hover {
-            background-color: var(--grey-hover);
-            border-color: var(--grey-hover);
+            background-color: var(--primary-hover);
+            border-color: var(--primary-hover);
         }
 
         /* Table Styling */
@@ -102,14 +106,14 @@ function product_image_src($filename, $width = 180) {
         }
 
         .table thead th {
-            background-color: var(--grey-light);
-            border-bottom: 2px solid var(--grey-secondary);
+            background-color: rgba(46, 128, 156, 0.06);
+            border-bottom: 2px solid rgba(46, 128, 156, 0.12);
         }
 
         /* Form Controls */
         .form-control:focus {
-            border-color: var(--grey-secondary);
-            box-shadow: 0 0 0 0.2rem rgba(63, 71, 78, 0.25);
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.2rem rgba(46, 128, 156, 0.25);
         }
 
         /* Remove Button in Cart */
@@ -121,6 +125,16 @@ function product_image_src($filename, $width = 180) {
         .btn-danger:hover {
             background-color: #bb2d3b;
             border-color: #b02a37;
+        }
+
+        /* Icons */
+        .bi {
+            color: var(--primary-color);
+        }
+
+        /* Text colors */
+        .text-primary {
+            color: var(--primary-color) !important;
         }
     </style>
 </head>
@@ -282,16 +296,30 @@ function product_image_src($filename, $width = 180) {
                 const total = parseFloat(totalInput.value.replace(/[^\d]/g, '')) || 0;
                 const bayar = parseFloat(this.value) || 0;
                 const kembalian = bayar - total;
-                
-                kembalianInput.value = `Rp ${kembalian.toLocaleString('id-ID')}`;
+
+                if (bayar < total) {
+                    kembalianInput.value = 'Uang kurang!';
+                    kembalianInput.style.color = 'red';
+                } else {
+                    kembalianInput.value = `Rp ${kembalian.toLocaleString('id-ID')}`;
+                    kembalianInput.style.color = 'black';
+                }
             });
 
             // Modify form submission
             document.getElementById('transaksi-form').addEventListener('submit', async function(e) {
                 e.preventDefault();
-                
+
                 if (cart.length === 0) {
                     alert('Keranjang masih kosong!');
+                    return;
+                }
+
+                const total = parseFloat(totalInput.value.replace(/[^\d]/g, '')) || 0;
+                const bayar = parseFloat(bayarInput.value) || 0;
+
+                if (bayar < total) {
+                    alert('Uang yang dibayarkan kurang!');
                     return;
                 }
 
@@ -305,11 +333,11 @@ function product_image_src($filename, $width = 180) {
                     });
 
                     const result = await response.json();
-                    
+
                     if (result.success) {
                         // Redirect ke halaman struk dengan ID transaksi
                         window.open(`Struk/struk.php?id=${result.transaction_id}`, '_blank', 'width=400,height=600');
-                        
+
                         // Reset keranjang
                         cart = [];
                         updateCartDisplay();

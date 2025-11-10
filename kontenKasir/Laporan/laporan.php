@@ -51,6 +51,92 @@ $res = $stmt->get_result();
     <title>Laporan Transaksi Kasir</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
+        :root {
+            --primary-color: #2E809C;
+            --primary-hover: #266f86;
+            --grey-primary: #2c3338;
+            --grey-secondary: #3f474e;
+            --grey-light: #e9ecef;
+            --grey-hover: #4a545c;
+        }
+
+        body {
+            background-color: var(--grey-light);
+            color: #123238;
+        }
+
+        .card {
+            border: none;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .card-header {
+            border-bottom: none;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+            border-color: var(--primary-hover);
+        }
+
+        .btn-success {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-success:hover {
+            background-color: var(--primary-hover);
+            border-color: var(--primary-hover);
+        }
+
+        .btn-warning {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-warning:hover {
+            background-color: var(--primary-hover);
+            border-color: var(--primary-hover);
+        }
+
+        .alert-success {
+            background-color: rgba(46, 128, 156, 0.1);
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .table {
+            color: var(--grey-primary);
+        }
+
+        .table thead {
+            background-color: rgba(46, 128, 156, 0.06);
+            border-bottom: 2px solid rgba(46, 128, 156, 0.12);
+        }
+
+        .table-responsive {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        /* Icons */
+        .bi {
+            color: var(--primary-color);
+        }
+
+        /* Text colors */
+        .text-primary {
+            color: var(--primary-color) !important;
+        }
+
         @media print {
 
             button,
@@ -102,7 +188,7 @@ $res = $stmt->get_result();
         <div class="card p-3 shadow-sm">
             <div class="table-responsive">
                 <table class="table table-bordered table-striped align-middle">
-                    <thead class="table-dark text-center">
+                    <thead class="text-center">
                         <tr>
                             <th>No</th>
                             <th>Kode Transaksi</th>
