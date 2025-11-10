@@ -10,17 +10,17 @@
     <link
         rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" />
-    <link rel="stylesheet" href="../../theme.css" />
+    
     <title>Tambah Admin/Kasir</title>
     <style>
         body {
             min-height: 100vh;
-            background: linear-gradient(135deg, var(--light-bg) 0%, #ffeaa7 100%);
+            background: linear-gradient(135deg, #f7fbfd 0%, #ffeaa7 100%);
             padding: 2rem 0;
         }
-        
+
         .page-title {
-            color: var(--primary-blue);
+            color: #2E809C;
             font-size: 2.5rem;
             font-weight: bold;
             text-align: center;
@@ -36,9 +36,9 @@
             backdrop-filter: blur(10px);
             padding: 2rem;
         }
-        
+
         .card-title h3 {
-            color: var(--primary-blue);
+            color: #2E809C;
             font-weight: bold;
             font-size: 1.75rem;
             margin-bottom: 1.5rem;
@@ -50,7 +50,7 @@
         }
 
         .form-control, .form-select {
-            border: 2px solid var(--primary-blue);
+            border: 2px solid #2E809C;
             border-radius: 12px;
             padding: 0.75rem 1rem 0.75rem 2.5rem;
             font-size: 1rem;
@@ -65,7 +65,7 @@
 
         .form-label {
             font-weight: 500;
-            color: var(--text-dark);
+            color: #333;
             margin-bottom: 0.5rem;
         }
 
@@ -74,13 +74,13 @@
             left: 1rem;
             top: 50%;
             transform: translateY(-50%);
-            color: var(--primary-blue);
+            color: #2E809C;
             font-size: 1.2rem;
             pointer-events: none;
         }
 
         .btn-primary {
-            background: linear-gradient(45deg, var(--primary-blue), #3498db);
+            background: linear-gradient(45deg, #2E809C, #3498db);
             border: none;
             border-radius: 12px;
             padding: 0.75rem 2.5rem;
@@ -101,7 +101,7 @@
         }
 
         hr {
-            border-color: var(--primary-blue);
+            border-color: #2E809C;
             opacity: 0.1;
             margin: 2rem 0;
         }

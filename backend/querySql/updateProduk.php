@@ -11,7 +11,7 @@ if (isset($_POST['update'])) {
     if (isset($_FILES['gambar']) && $_FILES['gambar']['name']) {
         $nama_file = $_FILES['gambar']['name'];
         $temp_file = $_FILES['gambar']['tmp_name'];
-        $upload_dir = '../../image';
+        $upload_dir = '../../image/';
         move_uploaded_file($temp_file, $upload_dir . $nama_file);
     $sqlUpdateProduk = "UPDATE produk SET nama_produk='$nama_produk', harga='$harga', stok='$stok', file_gambar='$nama_file' WHERE id_produk=$id";
     } else {

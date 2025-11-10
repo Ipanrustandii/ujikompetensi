@@ -13,15 +13,14 @@
   <link
     rel="stylesheet"
     href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" />
-  <link rel="stylesheet" href="theme.css" />
+  
   <title>Document</title>
   <style>
-    /* Layout only — colors are provided by theme.css (primary: var(--primary-blue)) */
     .sidebar {
       height: 100vh;
       width: 250px;
       position: fixed;
-      /* background handled by theme.css */
+      background-color: #2E809C;
     }
 
     .sidebar a {
@@ -29,20 +28,20 @@
       align-items: center;
       text-decoration: none;
       padding: 10px 20px;
-      color: var(--text-light);
+      color: white;
       font-size: 15px;
     }
 
     .sidebar a:hover {
-      background-color: rgba(46, 128, 156, 0.12);
-      color: var(--text-dark);
+      background-color: rgba(46, 128, 156, 0.3);
+      color: white;
       transform: translateX(5px);
     }
 
     .sidebar i {
       margin-right: 10px;
       font-size: 18px;
-      color: var(--text-light);
+      color: white;
     }
 
     .content {

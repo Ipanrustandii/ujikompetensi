@@ -46,35 +46,28 @@ $res = $stmt->get_result();
     <title>Laporan Transaksi Admin</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        :root{
-            --primary: #2E809C;
-            --primary-dark: #266f86;
-            --bg: #f6fbfc;
-            --muted: #6c757d;
-        }
-
         /* Base layout */
         body.bg-light{
-            background-color: var(--bg) !important;
+            background-color: #f6fbfc !important;
             color: #123238;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial;
         }
 
-        h4 { color: var(--primary); }
+        h4 { color: #2E809C; }
 
         /* Buttons */
         .btn-primary{
-            background-color: var(--primary) !important;
-            border-color: var(--primary) !important;
+            background-color: #2E809C !important;
+            border-color: #2E809C !important;
             color: #fff !important;
         }
         .btn-primary:hover, .btn-primary:focus{
-            background-color: var(--primary-dark) !important;
-            border-color: var(--primary-dark) !important;
+            background-color: #266f86 !important;
+            border-color: #266f86 !important;
         }
         .btn-success{
-            background-color: var(--primary) !important;
-            border-color: var(--primary) !important;
+            background-color: #2E809C !important;
+            border-color: #2E809C !important;
             color: #fff !important;
         }
 

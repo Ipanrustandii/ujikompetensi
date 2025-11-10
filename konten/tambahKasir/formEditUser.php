@@ -9,10 +9,9 @@
     <link rel="stylesheet" href="../../theme.css" />
     <title>Edit User</title>
     <style>
-        /* Local page styles that rely on theme variables (primary: var(--primary-blue)) */
         body {
             min-height: 100vh;
-            background: linear-gradient(135deg, var(--light-bg) 0%, #f7fbfd 100%);
+            background: linear-gradient(135deg, #f7fbfd 0%, #f7fbfd 100%);
             padding: 2rem 0;
         }
 
@@ -26,7 +25,7 @@
         }
 
         .page-title {
-            color: var(--primary-blue);
+            color: #2E809C;
             font-weight: 700;
             margin-bottom: 0.75rem;
             text-align: center;
@@ -34,7 +33,7 @@
 
         .form-label {
             font-weight: 600;
-            color: var(--text-dark);
+            color: #333;
         }
 
         .input-icon {
@@ -42,13 +41,13 @@
             left: 12px;
             top: 70%;
             transform: translateY(-50%);
-            color: var(--primary-blue);
+            color: #2E809C;
             font-size: 1.05rem;
             pointer-events: none;
         }
 
         .form-control, .form-select {
-            border: 2px solid var(--primary-blue);
+            border: 2px solid #2E809C;
             border-radius: 10px;
             padding-left: 2.6rem;
             height: calc(1.5em + 1rem);
@@ -62,7 +61,7 @@
         }
 
         .btn-update {
-            background: linear-gradient(90deg, var(--primary-blue), #2aa0d1);
+            background: linear-gradient(90deg, #2E809C, #2aa0d1);
             border: none;
             color: #fff;
             padding: 0.55rem 1.8rem;
