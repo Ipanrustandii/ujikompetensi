@@ -1,5 +1,10 @@
-
-
+<?php
+session_start();
+if (!isset($_SESSION['status']) || $_SESSION['status'] !== 'kasir') {
+  header("Location: index.php");
+  exit;
+}
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -13,8 +18,8 @@
   <link
     rel="stylesheet"
     href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" />
-  
-  <title>Document</title>
+
+  <title>Kasir Dashboard</title>
   <style>
     .sidebar {
       height: 100vh;
@@ -33,9 +38,9 @@
     }
 
     .sidebar a:hover {
-      background-color: rgba(46, 128, 156, 0.3);
+      background-color: rgba(39, 53, 58, 0.3);
       color: white;
-      transform: translateX(5px);
+      transform: translateX(1px);
     }
 
     .sidebar i {
@@ -63,18 +68,18 @@
 <body>
   <div class="sidebar">
     <h4 class="text-center text-white py-3">Kasir</h4>
-    
+
     <a href="kontenKasir/produk.php" target="kontenFrame">
       <i class="bi bi-house"></i> Daftar Menu
     </a>
-   
-  
 
-   
+
+
+
     <a href="kontenKasir/Laporan/laporan.php" target="kontenFrame">
       <i class="bi bi-person-badge"></i> Laporan
     </a>
-    <a href="backend/querySql/logout.php">
+    <a href="backend/querySql/logout.php" onclick="return confirm('Apakah Anda yakin ingin logout?');">
       <i class="bi bi-box-arrow-right"></i> Logout
     </a>
 

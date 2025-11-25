@@ -6,6 +6,16 @@
         $harga = $_POST['harga'];
         $stok = $_POST['stok'];
 
+        // Validasi harga dan stok
+        if ($harga <= 0) {
+            echo 'Harga harus lebih dari 0!';
+            exit;
+        }
+        if ($stok <= 0) {
+            echo 'Stok harus lebih dari 0!';
+            exit;
+        }
+
         $nama_file = '';
         if (isset($_FILES['gambar']) && $_FILES['gambar']['name']) {
             $nama_file = $_FILES['gambar']['name'];

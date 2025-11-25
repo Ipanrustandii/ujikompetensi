@@ -20,7 +20,7 @@ $stmt->execute();
 $total = $stmt->get_result()->fetch_assoc()['total_pendapatan'];
 
 // Ambil daftar semua transaksi
-$sql = "SELECT t.*, u.username
+$sql = "SELECT t.*, u.nama
         FROM transaksi t
         LEFT JOIN user u ON t.id_user = u.id_user";
 $params = [];
@@ -130,11 +130,11 @@ $res = $stmt->get_result();
         <!-- Filter tanggal -->
         <form class="row g-2 mb-4" method="GET">
             <div class="col-md-3">
-                <label class="form-label">Dari Tanggal</label>
+                <label class="form-label"></label>
                 <input type="date" name="from" class="form-control" value="<?= htmlspecialchars($from) ?>">
             </div>
             <div class="col-md-3">
-                <label class="form-label">Sampai Tanggal</label>
+                <label class="form-label"></label>
                 <input type="date" name="to" class="form-control" value="<?= htmlspecialchars($to) ?>">
             </div>
             <div class="col-md-3 d-flex align-items-end">
@@ -173,7 +173,7 @@ $res = $stmt->get_result();
                             <tr>
                                 <td class="text-center"><?= $no++ ?></td>
                                 <td>#<?= str_pad($r['id_transaksi'], 6, '0', STR_PAD_LEFT) ?></td>
-                                <td><?= htmlspecialchars($r['username']) ?></td>
+                                <td><?= htmlspecialchars($r['nama']) ?></td>
                                 <td><?= date('d-m-Y H:i', strtotime($r['tanggal'])) ?></td>
                                 <td>Rp <?= number_format($r['total'], 0, ',', '.') ?></td>
                                 <td>Rp <?= number_format($r['bayar'], 0, ',', '.') ?></td>

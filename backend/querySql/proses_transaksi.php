@@ -9,7 +9,7 @@ try {
     $conn->begin_transaction();
 
     $total = str_replace(['Rp', '.', ' '], '', $_POST['total']);
-    $bayar = $_POST['bayar'];
+    $bayar = str_replace(['.', ' '], '', $_POST['bayar']);
     $id_user = $_SESSION['user_id'] ?? 1; // Sesuaikan dengan session user
     $items = json_decode($_POST['items'], true);
 

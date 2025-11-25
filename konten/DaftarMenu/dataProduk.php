@@ -116,7 +116,7 @@
     ?>
     <div class="container py-4">
         <div class="d-flex justify-content-between align-items-center mb-4">
-            <h2 class="fw-bold text-primary"><i class="bi bi-box-seam"></i> Daftar Menu</h2>
+            <h2 class="fw-bold text-primary"><i class="bi bi-card-list"></i> Daftar Menu</h2>
             <a href="index.php" class="btn btn-success"><i class="bi bi-plus-circle"></i> Tambah Menu</a>
         </div>
         <div class="table-responsive">
@@ -141,7 +141,18 @@
                             <td><?= $no ?></td>
                             <td class="fw-semibold text-dark"><?= htmlspecialchars($data['nama_produk']) ?></td>
                             <td>Rp <?= number_format($data['harga'], 0, ',', '.') ?></td>
-                            <td><?= $data['stok'] ?></td>
+                            <td>
+                                <?php
+                                $stok = $data['stok'];
+                                if ($stok == 0) {
+                                    echo '<span class="badge bg-danger">Stok Habis</span>';
+                                } elseif ($stok <= 5) {
+                                    echo '<span class="badge bg-warning text-dark">Stok Menipis (' . $stok . ')</span>';
+                                } else {
+                                    echo $stok;
+                                }
+                                ?>
+                            </td>
                              <td><img src="../../image/<?= $data['file_gambar'] ?>" alt="GAMBAR TIDAK DITEMUKAN" width="100"></td>
 
 

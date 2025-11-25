@@ -11,7 +11,7 @@
         rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" />
    
-    <title>Daftar Menu</title>
+    <title>Data user</title>
     <style>
         body {
             font-family: 'Segoe UI', Arial, sans-serif;
@@ -108,7 +108,7 @@
                             <td>—</td>
                             <td><?= $data['status'] ?></td>
                             <td><a href="formEditUser.php?id_user=<?= $data['id_user'] ?>"><i class="bi bi-pencil-square"></i></a></td>
-                            <td><a href="../../backend/querySql/deleteUser.php?id_user=<?= $data['id_user'] ?>"><i class="bi bi-trash text-danger"></i></a></td>
+                            <td><a href="../../backend/querySql/deleteUser.php?id_user=<?= $data['id_user'] ?> "onclick="return confirm('Yakin ingin menghapus user ini?')"><i class="bi bi-trash text-danger"></i></a></td>
                         </tr>
                     <?php
                     }

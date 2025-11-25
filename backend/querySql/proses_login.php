@@ -7,7 +7,7 @@ $username = isset($_POST['username']) ? trim($_POST['username']) : '';
 $password = isset($_POST['password']) ? $_POST['password'] : '';
 
 if ($username === '' || $password === '') {
-    echo "<script>alert('Username dan password harus diisi!');window.location='login.php';</script>";
+    echo "<script>alert('Username dan password harus diisi!');window.location='../../index.php';</script>";
     exit;
 }
 
@@ -31,7 +31,7 @@ if ($result && $result->num_rows > 0) {
         $_SESSION['user_id'] = $user['id_user'];
 
         if ($user['status'] == 'admin') {
-            header("Location: ../../sidebarMenu.php");
+            header("Location: ../../sidebarAdmin.php");
             exit;
         } else {
             header("Location: ../../sidebarKasir.php");
@@ -56,7 +56,7 @@ if ($result && $result->num_rows > 0) {
             $_SESSION['status'] = $user['status'];
             $_SESSION['user_id'] = $user['id_user'];
             if ($user['status'] == 'admin') {
-                header("Location: ../../sidebarMenu.php");
+                header("Location: ../../sidebarAdmin.php");
                 exit;
             } else {
                 header("Location: ../../sidebarKasir.php");

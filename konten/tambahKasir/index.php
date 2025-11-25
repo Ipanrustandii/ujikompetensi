@@ -15,7 +15,7 @@
     <style>
         body {
             min-height: 100vh;
-            background: linear-gradient(135deg, #f7fbfd 0%, #ffeaa7 100%);
+            background: linear-gradient(135deg, #f7fbfd 0%, #f7fbfd 100%);
             padding: 2rem 0;
         }
 

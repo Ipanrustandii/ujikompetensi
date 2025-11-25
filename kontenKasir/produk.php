@@ -152,7 +152,7 @@ function product_image_src($filename, $width = 180) {
                         <div class="row">
                             <?php
                             // Query untuk mengambil produk terlaris
-                            $best_seller_query = "SELECT 
+                            $best_seller_query = "SELECT
                                 p.id_produk,
                                 p.nama_produk,
                                 p.harga,
@@ -161,20 +161,22 @@ function product_image_src($filename, $width = 180) {
                                 COALESCE(SUM(tp.jumlah), 0) as total_terjual
                                 FROM produk p
                                 LEFT JOIN transaksi_produk tp ON p.id_produk = tp.id_produk
-                                WHERE p.stok > 0
                                 GROUP BY p.id_produk, p.nama_produk, p.harga, p.stok, p.file_gambar
                                 ORDER BY total_terjual DESC
                                 LIMIT 4";
                             
                             $best_seller_result = $conn->query($best_seller_query);
                             while($product = $best_seller_result->fetch_assoc()):
+                                $stok = $product['stok'];
+                                $isOutOfStock = $stok == 0;
+                                $isLowStock = $stok > 0 && $stok <= 5;
                             ?>
                             <div class="col-md-3 mb-3">
                                 <div class="card h-100">
-                                    <img src="<?= product_image_src($product['file_gambar'], 120) ?>" 
+                                    <img src="<?= product_image_src($product['file_gambar'], 120) ?>"
                                          class="card-img-top"
                                          alt="<?= htmlspecialchars($product['nama_produk']) ?>"
-                                         style="height:120px; object-fit:cover;">
+                                         style="height:120px; object-fit:contain;">
                                     <div class="card-body text-center">
                                         <h6 class="card-title"><?= htmlspecialchars($product['nama_produk']) ?></h6>
                                         <p class="card-text text-primary fw-bold">
@@ -182,13 +184,18 @@ function product_image_src($filename, $width = 180) {
                                         </p>
                                         <p class="card-text small text-muted">
                                             Terjual: <?= $product['total_terjual'] ?>
+                                            <br>
+                                            Stok: <?= htmlspecialchars($stok) ?>
                                         </p>
-                                        <button class="btn btn-warning btn-sm add-item w-100" 
+                                        <button class="btn btn-warning btn-sm add-item w-100"
                                                 data-id="<?= $product['id_produk'] ?>"
                                                 data-nama="<?= $product['nama_produk'] ?>"
                                                 data-harga="<?= $product['harga'] ?>"
-                                                data-gambar="<?= htmlspecialchars($product['file_gambar']) ?>">
-                                            <i class="bi bi-cart-plus"></i> Tambah
+                                                data-gambar="<?= htmlspecialchars($product['file_gambar']) ?>"
+                                                data-stok="<?= $stok ?>"
+                                                <?php if ($isOutOfStock): ?>disabled<?php endif; ?>>
+                                            <i class="bi bi-cart-plus"></i>
+                                            Tambah
                                         </button>
                                     </div>
                                 </div>
@@ -205,29 +212,37 @@ function product_image_src($filename, $width = 180) {
                     <div class="card-body">
                         <div class="row">
                             <?php
-                            $query = "SELECT * FROM produk WHERE stok > 0";
+                            $query = "SELECT * FROM produk";
                             $result = $conn->query($query);
                             while($row = $result->fetch_assoc()):
+                                $stok = $row['stok'];
+                                $isOutOfStock = $stok == 0;
+                                $isLowStock = $stok > 0 && $stok <= 5;
                             ?>
                             <div class="col-md-3 mb-4">
                                 <div class="card h-100">
-                                    <img src="<?= product_image_src($row['file_gambar'], 180) ?>" 
+                                    <img src="<?= product_image_src($row['file_gambar'], 180) ?>"
                                          class="card-img-top"
                                          alt="<?= htmlspecialchars($row['nama_produk']) ?>"
-                                         style="height: 180px; object-fit: cover;">
+                                         style="height: 180px; object-fit: contain;">
                                     <div class="card-body">
                                         <h6 class="card-title"><?= htmlspecialchars($row['nama_produk']) ?></h6>
                                         <p class="card-text">
                                             <span class="text-primary fw-bold">Rp <?= number_format($row['harga'], 0, ',', '.') ?></span>
                                             <br>
-                                            <small class="text-muted">Stok: <?= htmlspecialchars($row['stok']) ?></small>
+                                            <small class="text-muted">
+                                                Stok: <?= htmlspecialchars($stok) ?>
+                                            </small>
                                         </p>
-                                        <button class="btn btn-success btn-sm w-100 add-item" 
+                                        <button class="btn btn-success btn-sm w-100 add-item"
                                                 data-id="<?= $row['id_produk'] ?>"
                                                 data-nama="<?= $row['nama_produk'] ?>"
                                                 data-harga="<?= $row['harga'] ?>"
-                                                data-gambar="<?= htmlspecialchars($row['file_gambar']) ?>">
-                                            <i class="bi bi-cart-plus"></i> Tambah ke Keranjang
+                                                data-gambar="<?= htmlspecialchars($row['file_gambar']) ?>"
+                                                data-stok="<?= $stok ?>"
+                                                <?php if ($isOutOfStock): ?>disabled<?php endif; ?>>
+                                            <i class="bi bi-cart-plus"></i>
+                                            Tambah ke Keranjang
                                         </button>
                                     </div>
                                 </div>
@@ -256,7 +271,7 @@ function product_image_src($filename, $width = 180) {
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Bayar:</label>
-                                <input type="number" class="form-control" id="bayar" name="bayar" required>
+                                <input type="text" class="form-control" id="bayar" name="bayar" required>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Kembalian:</label>
@@ -285,7 +300,22 @@ function product_image_src($filename, $width = 180) {
                     const nama = this.dataset.nama;
                     const harga = parseFloat(this.dataset.harga);
                     const gambar = this.dataset.gambar || ''; // ambil nama file gambar
-                                        
+                    const stok = parseInt(this.dataset.stok) || 0;
+
+                    // Check if item is out of stock
+                    if (stok === 0) {
+                        alert('Produk ini stok habis!');
+                        return;
+                    }
+
+                    // Check if adding this item would exceed stock
+                    const existingItem = cart.find(item => item.id === id);
+                    const currentQty = existingItem ? existingItem.qty : 0;
+                    if (currentQty + 1 > stok) {
+                        alert(`Stok tidak cukup! Stok tersedia: ${stok}`);
+                        return;
+                    }
+
                     addToCart(id, nama, harga, gambar);
                     updateCartDisplay();
                 });
@@ -293,8 +323,11 @@ function product_image_src($filename, $width = 180) {
 
             // Hitung kembalian saat input pembayaran berubah
             bayarInput.addEventListener('input', function() {
+                // Format input dengan titik pemisah ribuan
+                this.value = this.value.replace(/[^\d]/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+
                 const total = parseFloat(totalInput.value.replace(/[^\d]/g, '')) || 0;
-                const bayar = parseFloat(this.value) || 0;
+                const bayar = parseFloat(this.value.replace(/[^\d]/g, '')) || 0;
                 const kembalian = bayar - total;
 
                 if (bayar < total) {
@@ -316,7 +349,7 @@ function product_image_src($filename, $width = 180) {
                 }
 
                 const total = parseFloat(totalInput.value.replace(/[^\d]/g, '')) || 0;
-                const bayar = parseFloat(bayarInput.value) || 0;
+                const bayar = parseFloat(bayarInput.value.replace(/[^\d]/g, '')) || 0;
 
                 if (bayar < total) {
                     alert('Uang yang dibayarkan kurang!');
@@ -373,7 +406,7 @@ function product_image_src($filename, $width = 180) {
                     cartDiv.innerHTML += `
                         <div class="d-flex justify-content-between align-items-center mb-2">
                             <div class="d-flex align-items-center">
-                                <img src="../image/${item.gambar}" alt="${item.nama}" style="width:40px;height:40px;object-fit:cover;border-radius:4px;margin-right:8px;">
+                                <img src="../image/${item.gambar}" alt="${item.nama}" style="width:40px;height:40px;object-fit:contain;border-radius:4px;margin-right:8px;">
                                 <div>
                                     ${item.nama} x ${item.qty}
                                     <input type="hidden" name="items[${index}][id]" value="${item.id}">
